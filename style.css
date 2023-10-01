@@ -1,0 +1,73 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+/*************************************/
+
+.header-section{
+   background-color: red;
+}
+
+.logo{
+    width: 70px;
+}
+
+.cart-products{
+    background-color: blue;
+}
+
+.count-product{
+    background-color: green;
+    width: 1%;
+}
+
+/**************************************/
+
+.products{
+    padding-top: 30px;
+    padding-bottom: 30px;
+    background-color: rgb(220, 220, 220);
+    display: flex;
+    flex-direction: row;
+gap: 30px;
+justify-content: center;
+align-items: center;
+flex-wrap: wrap;
+}
+
+.carts{
+    background-color: aliceblue;
+    width: 400px;
+    height: 500px;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+img{
+    width: 85%;
+}
+
+.title{
+    font-size: 30px;
+}
+
+.btn-add-cart{
+    padding: 10px;
+    border: 1px solid red;
+    color: red;
+    width: 50%;
+    text-align: center;
+    font-size: 30px;
+    text-decoration: none;
+}
+
+.prize{
+    font-weight:700;
+    font-size: 35px;
+}

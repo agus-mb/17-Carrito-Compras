@@ -7,6 +7,10 @@
 
 .header-section{
    background-color: red;
+   display: flex;
+   flex-direction: row;
+   position: relative;
+   padding: 15px;
 }
 
 .logo{
@@ -15,11 +19,27 @@
 
 .cart-products{
     background-color: blue;
+    width: 27%;
+    height: 200px;
+    border-radius: 30px;
+    position: absolute;
+    right:calc(10% - 170px);
 }
 
 .count-product{
+    display: none;
     background-color: green;
-    width: 1%;
+    width: 35px;
+    height: 25px;
+    padding-top:10px;
+    text-align: center;
+    justify-content: center;
+    font-weight: 600;
+    border-radius: 50%;
+    position: absolute;
+    right:calc(10% - 150px);
+    top: 5px;
+    z-index: 1;
 }
 
 /**************************************/

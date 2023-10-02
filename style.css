@@ -6,10 +6,13 @@
 /*************************************/
 
 .header-section{
-   background-color: red;
+   background-color: rgb(146, 146, 146);
    display: flex;
    flex-direction: row;
-   position: relative;
+   justify-content: space-around;
+   align-items: center;
+   gap: 85%;
+      position: relative;
    padding: 15px;
 }
 
@@ -17,29 +20,110 @@
     width: 70px;
 }
 
+.cart{
+    width: 110%;
+cursor: pointer;
+}
+
 .cart-products{
-    background-color: blue;
+    padding: 20px;
+    background-color: rgb(102, 102, 102);
     width: 27%;
-    height: 200px;
+    height: auto;
     border-radius: 30px;
     position: absolute;
     right:calc(10% - 170px);
+    top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+   /* overflow: auto;*/
+   
 }
+
+.close-btn{
+    display: flex;
+    justify-content: end;
+    align-items: flex-end;
+    font-size: 22px;
+    border-radius: 30px;
+   color:rgb(255, 255, 255);
+   font-weight: 700;
+   cursor: pointer;
+}
+
+h3{
+    display: flex;
+    justify-content: center;
+    align-items:center ;
+    font-size: 35px;
+    margin: 10px;
+}
+
+.card-items{
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+    margin-bottom: 10px;
+}
+
+.item{
+    height: 80px;
+    border-radius: 30px;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+padding: 10px;
+    align-items: center;
+    justify-content: center;
+    gap: 120px;
+
+}
+
+.item-content{
+    display: flex;
+    flex-direction: column;
+justify-content: center;
+align-items: center;
+font-size: 30px;
+}
+
+.item-content h5{
+    font-size: 25px;
+}
+
+.item span{
+    cursor: pointer;
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.item img{
+    width: 15%;
+    border-radius: 30%;
+}
+
 
 .count-product{
     display: none;
-    background-color: green;
-    width: 35px;
-    height: 25px;
+    background-color: rgb(128, 0, 0);
+    width: 30px;
+    height: 21px;
     padding-top:10px;
     text-align: center;
     justify-content: center;
-    font-weight: 600;
+    font-weight: 700;
     border-radius: 50%;
     position: absolute;
-    right:calc(10% - 150px);
+    right:calc(10% - 153px);
     top: 5px;
     z-index: 1;
+}
+
+
+.price-total{
+    font-size: 40px;
 }
 
 /**************************************/

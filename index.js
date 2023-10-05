@@ -5,6 +5,17 @@ let buyThings = [];
 loadEventsListeners();
 function loadEventsListeners() {
   allContainerCart.addEventListener("click", addProduct);
+  containerBuyCard.addEventListener("click", deleteProduct);
+}
+
+//Si clickeamos en un elemento con la clase delte-product vamos a crear una const que tome su id, luego, recorreremos el array de productos a comprar para indicarle que si el id coincide con uno ya clcikeado anteriormente este ultimo no se agregue, no se repita.
+
+function deleteProduct(e){
+    if(e.target.classList.contains('delete-product')){
+        const deleteId = e.target.getAttribute('data-id');
+        buyThings = buyThings.filter(product => product.id !== deleteId)
+    }
+    loadHtml();
 }
 
 function addProduct(e) {
@@ -26,7 +37,24 @@ function readTheContent(product) {
     amount: 1, //es como un contador de objetos
   };
 
-  buyThings = [...buyThings, infoProduct]; //de alguna forma es vincular array y productos.
+  const exist = buyThings.some(product=>product.id === infoProduct.id);
+  if (exist){
+    const pro= buyThings.map(product=>{
+        if(product.id===infoProduct.id){
+            product.amount++;
+            return product;
+        }else{
+            return product;
+        }
+    });
+    buyThings=[...pro];
+  }else{
+    buyThings = [...buyThings, infoProduct];
+  }
+
+
+
+   //de alguna forma es vincular array y productos.
   loadHtml(); //hace aparecer los item-cards en el carrito.
 }
 

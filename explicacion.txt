@@ -1,0 +1,34 @@
+La razón por la que es esencial la función `loadHtml()` dentro de la función `deleteProduct(e)` es que `loadHtml()` se encarga de actualizar la representación visual de los elementos en el carrito de compras en función de la información almacenada en el array `buyThings`. Cuando se elimina un producto, es necesario actualizar la vista del carrito para que refleje correctamente la lista de productos actualizada.
+
+Aquí está el flujo de lo que sucede:
+
+1. El evento `click` en un elemento con la clase `delete-product` dispara la función `deleteProduct(e)`.
+
+2. En `deleteProduct(e)`, se elimina el producto del array `buyThings` basado en su `id`. Esto actualiza la lista de productos que se mostrará en el carrito, ya que el producto se ha eliminado del array.
+
+3. Después de eliminar el producto, se llama a `loadHtml()`. Esta función recorre el array `buyThings` y crea elementos HTML para cada producto en la lista. Luego, agrega estos elementos al contenedor del carrito (`containerBuyCard`).
+
+4. Como resultado, `loadHtml()` actualiza la vista del carrito con la lista de productos actualizada después de eliminar un producto.
+
+En resumen, `loadHtml()` se encarga de reflejar visualmente los cambios en la lista de productos en el carrito, y es por eso que se llama después de eliminar un producto en la función `deleteProduct(e)` para mantener la representación actualizada.
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Claro, puedo explicarte la diferencia entre `product` y `infoProduct` en el código que proporcionaste.
+
+En el código que compartiste, `product` y `infoProduct` son dos objetos que se utilizan para almacenar información sobre un producto, pero desempeñan diferentes roles y se utilizan en momentos diferentes del flujo del programa:
+
+1. **`infoProduct`**:
+   - Este objeto se crea dentro de la función `readTheContent(product)` cuando se agrega un producto al carrito.
+   - Se utiliza para recopilar información específica del producto que se va a agregar al carrito, como la imagen, el título, el precio, el ID y la cantidad.
+   - Su propósito principal es crear una representación estructurada y organizada de los detalles del producto que se está agregando.
+   - Luego de ser creado, `infoProduct` se agrega al array `buyThings`, que almacena todos los productos en el carrito.
+
+2. **`product`**:
+   - Este objeto se utiliza dentro de un bucle `forEach` en la función `loadHtml()` para iterar a través de los productos en el array `buyThings`.
+   - Representa uno de los productos almacenados en `buyThings`.
+   - Se desestructura (`const { image, title, price, id, amount } = product;`) para acceder a los atributos específicos de un producto.
+   - La finalidad de `product` es crear un elemento HTML que representa visualmente un producto en el carrito, utilizando los atributos del producto almacenados en `buyThings`.
+
+En resumen, `infoProduct` se utiliza cuando se agrega un producto al carrito para estructurar y almacenar la información del producto, mientras que `product` se utiliza para representar visualmente un producto en el carrito cuando se actualiza la vista del carrito en la función `loadHtml()`. Ambos objetos tienen diferentes propósitos en el flujo del programa y se utilizan en contextos diferentes.

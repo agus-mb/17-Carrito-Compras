@@ -103,7 +103,8 @@ function clearHTML() {
   containerBuyCard.innerHTML = " ";
 }
 
-function updateTotal() { //cuando no hay productos en el carrito el total vuelve a ser 0.
+function updateTotal() {
+  //cuando no hay productos en el carrito el total vuelve a ser 0.
   totalCard = buyThings
     .reduce((total, product) => {
       const productPrice = parseFloat(product.price);

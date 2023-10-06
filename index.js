@@ -1,6 +1,8 @@
 let allContainerCart = document.querySelector(".products");
 let containerBuyCard = document.querySelector(".card-items");
+let priceTotal = document.querySelector(".price-total");
 let buyThings = [];
+let totalCard = 0;
 
 loadEventsListeners();
 function loadEventsListeners() {
@@ -10,12 +12,23 @@ function loadEventsListeners() {
 
 //Si clickeamos en un elemento con la clase delte-product vamos a crear una const que tome su id, luego, recorreremos el array de productos a comprar para indicarle que si el id coincide con uno ya clcikeado anteriormente este ultimo no se agregue, no se repita.
 
-function deleteProduct(e){
-    if(e.target.classList.contains('delete-product')){
-        const deleteId = e.target.getAttribute('data-id');
-        buyThings = buyThings.filter(product => product.id !== deleteId)
-    }
-    loadHtml();
+function deleteProduct(e) {
+  if (e.target.classList.contains("delete-product")) {
+    const deleteId = e.target.getAttribute("data-id");
+
+    buyThings.forEach((value) => {
+      if (value.id === deleteId) {
+        let priceReduce = parseFloat(value.price) * parseFloat(value.amount);
+        totalCard = totalCard - priceReduce;
+        totalCard = totalCard.toFixed(2);
+      }
+    });
+    buyThings = buyThings.filter((product) => product.id !== deleteId);
+
+    updateTotal();
+  }
+
+  loadHtml();
 }
 
 function addProduct(e) {
@@ -37,24 +50,25 @@ function readTheContent(product) {
     amount: 1, //es como un contador de objetos
   };
 
-  const exist = buyThings.some(product=>product.id === infoProduct.id);
-  if (exist){
-    const pro= buyThings.map(product=>{
-        if(product.id===infoProduct.id){
-            product.amount++;
-            return product;
-        }else{
-            return product;
-        }
+  totalCard = parseFloat(totalCard) + parseFloat(infoProduct.price); //el parseFloat es para lo relacionado a decimales, nada importante.
+  totalCard = totalCard.toFixed(2); //redondea a 2 decimales.
+
+  const exist = buyThings.some((product) => product.id === infoProduct.id);
+  if (exist) {
+    const pro = buyThings.map((product) => {
+      if (product.id === infoProduct.id) {
+        product.amount++;
+        return product;
+      } else {
+        return product;
+      }
     });
-    buyThings=[...pro];
-  }else{
+    buyThings = [...pro];
+  } else {
     buyThings = [...buyThings, infoProduct];
   }
 
-
-
-   //de alguna forma es vincular array y productos.
+  //de alguna forma es vincular array y productos.
   loadHtml(); //hace aparecer los item-cards en el carrito.
 }
 
@@ -78,9 +92,26 @@ function loadHtml() {
         `;
 
     containerBuyCard.appendChild(row); //a el contenedor de items le vamos agregando hijos, los hijos son el row (item) que creamos con js.
+
+    priceTotal.innerHTML = totalCard;
   });
+
+  updateTotal();
 }
 
 function clearHTML() {
   containerBuyCard.innerHTML = " ";
+}
+
+function updateTotal() { //cuando no hay productos en el carrito el total vuelve a ser 0.
+  totalCard = buyThings
+    .reduce((total, product) => {
+      const productPrice = parseFloat(product.price);
+      const productAmount = parseInt(product.amount);
+      return total + productPrice * productAmount;
+    }, 0)
+    .toFixed(2);
+
+  // Actualiza el elemento en el HTML con el total
+  priceTotal.innerHTML = totalCard;
 }
